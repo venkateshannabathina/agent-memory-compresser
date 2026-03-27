@@ -1,0 +1,21 @@
+# openenv.yaml
+# This is the metadata file OpenEnv uses to validate your submission.
+# Run "openenv validate" to check everything passes.
+
+name: agent-memory-compressor
+version: 1.0.0
+description: RL environment for training agents to compress LLM conversation memory while preserving critical facts for downstream task accuracy
+author: Venkatesh Annabathina
+tags:
+  - memory
+  - llm-agents
+  - compression
+  - ai-infrastructure
+  - openenv
+tasks:
+  - id: easy
+    description: Compress a 20-turn casual conversation, preserve 3 key facts within 100 tokens
+  - id: medium
+    description: Compress a 60-turn noisy support ticket thread, extract 4 critical facts within 200 tokens
+  - id: hard
+    description: Compress and reconcile 3 conflicting multi-session memory dumps, resolve address contradiction within 150 tokens
