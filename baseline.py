@@ -10,8 +10,11 @@ from openai import OpenAI
 from dotenv import load_dotenv
 
 load_dotenv()
-client = OpenAI()
-BASE_URL = os.environ.get("ENV_URL", "http://localhost:8000")
+client = OpenAI(
+    api_key=os.environ.get("OPENAI_API_KEY"),
+    base_url=os.environ.get("OPENAI_BASE_URL", "https://api.groq.com/openai/v1"),
+)
+BASE_URL = os.environ.get("ENV_URL", "http://localhost:7860")
 
 
 def run_task(task_id: str) -> float:
@@ -66,7 +69,7 @@ Respond ONLY with valid JSON in this exact format:
     # ── STEP 3: Call GPT-4o ───────────────────────────────────────────────────
 
     response = client.chat.completions.create(
-        model="openai/gpt-oss-120b",
+        model=os.environ.get("MODEL_NAME", "llama-3.3-70b-versatile"),
         messages=[{"role": "user", "content": prompt}],
         response_format={"type": "json_object"}
     )
