@@ -7,8 +7,10 @@ import os
 import json
 import requests
 from openai import OpenAI
+from dotenv import load_dotenv
 
-client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+load_dotenv()
+client = OpenAI()
 BASE_URL = os.environ.get("ENV_URL", "http://localhost:8000")
 
 
@@ -64,7 +66,7 @@ Respond ONLY with valid JSON in this exact format:
     # ── STEP 3: Call GPT-4o ───────────────────────────────────────────────────
 
     response = client.chat.completions.create(
-        model="gpt-4o",
+        model="openai/gpt-oss-120b",
         messages=[{"role": "user", "content": prompt}],
         response_format={"type": "json_object"}
     )

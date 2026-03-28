@@ -4,7 +4,8 @@
 # Every route just calls the environment and returns the result.
 
 from fastapi import FastAPI, HTTPException
-from app.env import AgentMemoryEnv, Action
+from app.env import AgentMemoryEnv
+from app.models import Action
 from app.tasks import TASKS
 
 app = FastAPI(
@@ -115,8 +116,9 @@ def grader(episode_id: str):
 @app.get("/baseline")
 def baseline():
     import subprocess
+    import sys
     result = subprocess.run(
-        ["python", "baseline.py"],
+        [sys.executable, "baseline.py"],
         capture_output=True,
         text=True
     )

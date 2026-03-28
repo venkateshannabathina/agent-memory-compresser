@@ -3,7 +3,7 @@
 # It takes the agent's Action and the gold answers, and returns a Reward.
 # Never returns the same score twice — score always depends on what the agent actually wrote.
 
-from app.env import Action, Reward
+from app.models import Action, Reward
 
 
 def compute_reward(action: Action, gold: dict) -> Reward:
