@@ -18,6 +18,14 @@ app = FastAPI(
 env = AgentMemoryEnv()
 
 
+# ── ROOT ──────────────────────────────────────────────────────────────────────
+# HF Spaces hits / to check if the app is alive.
+
+@app.get("/")
+def root():
+    return {"status": "ok", "message": "API running"}
+
+
 # ── HEALTH ────────────────────────────────────────────────────────────────────
 # Judges hit this first. Must return 200 or you're eliminated in Phase 1.
 
