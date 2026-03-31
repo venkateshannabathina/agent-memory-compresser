@@ -153,8 +153,8 @@ uvicorn app.main:app --host 0.0.0.0 --port 7860
 ```bash
 docker build -t agent-memory-compressor .
 docker run -p 7860:7860 \
-  -e OPENAI_API_KEY=your_key \
-  -e OPENAI_BASE_URL=https://api.groq.com/openai/v1 \
+  -e HF_TOKEN=your_key \
+  -e API_BASE_URL=https://api.groq.com/openai/v1 \
   agent-memory-compressor
 ```
 
@@ -162,8 +162,8 @@ docker run -p 7860:7860 \
 
 | Variable | Description |
 |----------|-------------|
-| `OPENAI_API_KEY` | Your API key |
-| `OPENAI_BASE_URL` | 'https://api.groq.com/openai/v1' |
+| `HF_TOKEN` | Your Hugging Face / API token |
+| `API_BASE_URL` | 'https://api.groq.com/openai/v1' |
 | `MODEL_NAME` | gpt-oss-120b |
 | `ENV_URL` | `https://venkateshannabathina-agent-memory-compressor.hf.space` |
 
