@@ -118,7 +118,7 @@ def grader(episode_id: str):
 
 
 # ── BASELINE ──────────────────────────────────────────────────────────────────
-# Triggers the baseline script and returns scores for all 3 tasks.
+# Triggers the inference script and returns scores for all 3 tasks.
 # Judges hit this to verify your env produces real, reproducible scores.
 
 @app.get("/baseline")
@@ -126,7 +126,7 @@ def baseline():
     import subprocess
     import sys
     result = subprocess.run(
-        [sys.executable, "baseline.py"],
+        [sys.executable, "inference.py"],
         capture_output=True,
         text=True
     )
