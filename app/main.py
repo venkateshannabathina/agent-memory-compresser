@@ -121,8 +121,8 @@ def grader(episode_id: str):
 # Triggers the inference script and returns scores for all 3 tasks.
 # Judges hit this to verify your env produces real, reproducible scores.
 
-@app.get("/inference")
-def inference():
+@app.get("/baseline")
+def baseline():
     import subprocess
     import sys
     result = subprocess.run(

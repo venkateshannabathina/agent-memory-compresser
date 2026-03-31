@@ -133,7 +133,7 @@ Inference run using LLM via compatible API.
 | `/state` | GET | Get current episode state |
 | `/tasks` | GET | List all tasks and action schema |
 | `/grader` | POST | Get grader status for an episode |
-| `/inference` | GET | Run inference script across all 3 tasks |
+| `/baseline` | GET | Run inference script across all 3 tasks |
 
 ---
 
