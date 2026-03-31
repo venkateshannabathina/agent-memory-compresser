@@ -1,7 +1,7 @@
-# baseline.py
+# inference.py
 # This script proves your environment works.
 # It uses GPT-4o to actually run through all 3 tasks and prints real scores.
-# Judges hit /baseline which triggers this script and returns the output.
+# Judges hit /inference which triggers this script and returns the output.
 
 import os
 import json
@@ -110,7 +110,7 @@ Respond ONLY with valid JSON in this exact format:
 # ── MAIN ──────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    print("Running baseline across all 3 tasks...\n")
+    print("Running inference across all 3 tasks...\n")
     scores = {}
 
     for task in ["easy", "medium", "hard"]:
@@ -120,7 +120,7 @@ if __name__ == "__main__":
             print(f"Task [{task}] FAILED: {e}")
             scores[task] = 0.0
 
-    print("\n── FINAL BASELINE SCORES ──────────────────────")
+    print("\n── FINAL INFERENCE SCORES ──────────────────────")
     for task, score in scores.items():
         print(f"  {task:<8}: {score}")
 

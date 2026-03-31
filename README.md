@@ -25,9 +25,11 @@ An OpenEnv reinforcement learning environment that trains AI agents to compress 
 
 AI agents in production break down as conversations grow long. They lose track of key facts, get confused by contradictions across sessions, and eventually exceed their context window. This environment simulates that exact problem — giving agents a real memory dump and challenging them to compress it intelligently. Every decision (what to keep, what to cut, what to resolve) is scored automatically.
 
+ex:-
 The goal is to compress a long conversation into the shortest possible memory that still tells the full story. Like turning 
 "Venky left home at 8:30am, took the bus, reached school by 9:00am, attended all classes, had lunch at 1pm, finished at 5:00pm and went home"
-into just "Venky: school 9am–5pm." Same information, fraction of the size.
+into just "Venky: school 9am–5pm." 
+Same information, fraction of the size.
 ---
 
 ## Environment Overview
@@ -107,9 +109,9 @@ A conversation spanning multiple sessions where the user's delivery address chan
 
 ---
 
-## Baseline Scores
+## Inference Scores
 
-Baseline run using GPT-4o via OpenAI-compatible API.
+Inference run using LLM via compatible API.
 
 | Task | Score | Facts | Compression Ratio |
 |------|-------|-------|-------------------|
@@ -131,7 +133,7 @@ Baseline run using GPT-4o via OpenAI-compatible API.
 | `/state` | GET | Get current episode state |
 | `/tasks` | GET | List all tasks and action schema |
 | `/grader` | POST | Get grader status for an episode |
-| `/baseline` | GET | Run baseline script across all 3 tasks |
+| `/inference` | GET | Run inference script across all 3 tasks |
 
 ---
 
@@ -165,10 +167,10 @@ docker run -p 7860:7860 \
 | `MODEL_NAME` | gpt-oss-120b |
 | `ENV_URL` | `https://venkateshannabathina-agent-memory-compressor.hf.space` |
 
-### Running the Baseline
+### Running Inference
 
 ```bash
-python baseline.py
+python inference.py
 ```
 
 ---
@@ -186,7 +188,7 @@ agent_memory_compressor/
 │   └── models.py      # Pydantic data models
 ├── server/
 │   └── app.py         # Entry point for openenv
-├── baseline.py        # Baseline inference script
+├── inference.py       # Inference script
 ├── Dockerfile
 ├── requirements.txt
 └── openenv.yaml
