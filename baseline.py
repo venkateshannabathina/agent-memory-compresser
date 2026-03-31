@@ -14,7 +14,7 @@ client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),
     base_url=os.environ.get("OPENAI_BASE_URL", "https://api.groq.com/openai/v1"),
 )
-BASE_URL = os.environ.get("ENV_URL", "http://localhost:7860")
+BASE_URL = os.environ.get("ENV_URL", "https://venkateshannabathina-agent-memory-compressor.hf.space")
 
 
 def run_task(task_id: str) -> float:
