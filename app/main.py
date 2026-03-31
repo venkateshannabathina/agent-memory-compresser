@@ -130,6 +130,13 @@ def baseline():
         capture_output=True,
         text=True
     )
+    if result.returncode != 0:
+        return {
+            "status": "error",
+            "message": "Inference script failed. Check your .env variables or API connection.",
+            "details": result.stderr or result.stdout
+        }
+
     return {
         "output": result.stdout,
         "errors": result.stderr,

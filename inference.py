@@ -9,12 +9,19 @@ import requests
 from openai import OpenAI
 from dotenv import load_dotenv
 
+import sys
 load_dotenv()
+
+hf_token = os.environ.get("HF_TOKEN")
+if not hf_token:
+    print("❌ Error: 'HF_TOKEN' is missing from the .env file. Please add it to make authentication work.")
+    sys.exit(1)
+
 client = OpenAI(
-    api_key=os.environ.get("HF_TOKEN"),
+    api_key=hf_token,
     base_url=os.environ.get("API_BASE_URL", "https://api.groq.com/openai/v1"),
 )
-BASE_URL = os.environ.get("ENV_URL", "https://venkateshannabathina-agent-memory-compressor.hf.space")
+BASE_URL = os.environ.get("ENV_URL", "http://localhost:7860")
 
 
 def run_task(task_id: str) -> float:
