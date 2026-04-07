@@ -21,7 +21,7 @@ client = OpenAI(
     api_key=hf_token,
     base_url=os.environ.get("API_BASE_URL", "https://api.groq.com/openai/v1"),
 )
-BASE_URL = os.environ.get("ENV_URL", "http://localhost:7860")
+BASE_URL = os.environ.get("ENV_URL", "https://venkateshannabathina-agent-memory-compressor.hf.space")
 
 
 def run_task(task_id: str) -> float:
@@ -104,9 +104,6 @@ Respond ONLY with valid JSON in this exact format:
     print(f"  Compressed to  : {action_data.get('compression_ratio', '?')} ratio")
     print(f"  Compressed out : {action_data.get('compressed_memory', '')[:120]}...")
 
-    print(f"[START] task={task_id}", flush=True)
-    print(f"[STEP] step=1 reward={score}", flush=True)
-    print(f"[END] task={task_id} score={score} steps=1", flush=True)
 
     return score
 
@@ -118,11 +115,16 @@ if __name__ == "__main__":
     scores = {}
 
     for task in ["easy", "medium", "hard"]:
+        print(f"[START] task={task}", flush=True)
         try:
-            scores[task] = run_task(task)
+            score = run_task(task)
+            scores[task] = score
         except Exception as e:
             print(f"Task [{task}] FAILED: {e}")
+            score = 0.0
             scores[task] = 0.0
+        print(f"[STEP] step=1 reward={score}", flush=True)
+        print(f"[END] task={task} score={score} steps=1", flush=True)
 
     print("\n── FINAL INFERENCE SCORES ──────────────────────")
     for task, score in scores.items():
