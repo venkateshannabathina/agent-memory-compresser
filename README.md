@@ -1,4 +1,13 @@
- 
+---
+title: Agent Memory Compressor
+emoji: 🧠
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+pinned: false
+app_port: 7860
+---
+
 # 🧠 Agent Memory Compressor
 
 An OpenEnv reinforcement learning environment that trains AI agents to compress bloated conversation histories while preserving critical facts, avoiding hallucinations, and resolving contradictions.
