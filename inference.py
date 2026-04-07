@@ -124,7 +124,7 @@ if __name__ == "__main__":
             score = 0.0
             scores[task] = 0.0
         print(f"[STEP] step=1 reward={score}", flush=True)
-        print(f"[END] task={task} score={score} steps=1", flush=True)
+        print(f"[END] task={task} score={score:.2f} steps=1", flush=True)
 
     print("\n── FINAL INFERENCE SCORES ──────────────────────")
     for task, score in scores.items():

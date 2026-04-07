@@ -73,7 +73,7 @@ def compute_reward(action: Action, gold: dict) -> Reward:
 
     # ── FINAL SCORE ───────────────────────────────────────────────────────────
     # Clamp between 0.0 and 1.0 — can never go negative or above 1.
-    final_score = round(max(0.0, min(score, 1.0)), 4)
+    final_score = round(max(0.01, min(0.99, score)), 4)
 
     return Reward(
         score=final_score,
