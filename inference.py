@@ -104,6 +104,10 @@ Respond ONLY with valid JSON in this exact format:
     print(f"  Compressed to  : {action_data.get('compression_ratio', '?')} ratio")
     print(f"  Compressed out : {action_data.get('compressed_memory', '')[:120]}...")
 
+    print(f"[START] task={task_id}", flush=True)
+    print(f"[STEP] step=1 reward={score}", flush=True)
+    print(f"[END] task={task_id} score={score} steps=1", flush=True)
+
     return score
 
 
