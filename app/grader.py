@@ -71,9 +71,10 @@ def compute_reward(action: Action, gold: dict) -> Reward:
     breakdown["conflict_resolution"] = conflict_score
 
 
-    # ── FINAL SCORE ───────────────────────────────────────────────────────────
-    # Clamp between 0.0 and 1.0 — can never go negative or above 1.
-    final_score = round(max(0.01, min(0.99, score)), 4)
+    # FINAL SCORE ───────────────────────────────────────────────────────────
+    # Clamp between 0.01 and 0.99 — never allow 0.0 or 1.0.
+    score = max(0.01, min(0.99, score))
+    final_score = round(score, 4)
 
     return Reward(
         score=final_score,
